@@ -1,5 +1,7 @@
 {
-    "cSpell.words": [
-        "Peyton's"
-    ]
+    "cSpell.words": ["Peyton's"],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
