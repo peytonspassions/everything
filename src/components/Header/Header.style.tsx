@@ -6,9 +6,8 @@ const BACKGROUND = AppStyles.colors.purple;
 
 const HeaderContainer = styled.div`
     background-color: rgb(from ${BACKGROUND} r g b / 0.5);
-
     width: 2.5rem;
-    height: calc(100% - 2rem);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

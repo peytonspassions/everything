@@ -17,6 +17,7 @@ const PageHeader = styled.div`
     font-size: 38px;
     font-family: ${AppStyles.fonts.cursive};
     border-bottom: 1px solid ${AppStyles.colors.black};
+    margin-bottom: 1rem;
 `;
 
 export const LayoutStyles = { Container, PageContent, PageHeader };

@@ -1,7 +1,7 @@
 const AppStyles = {
     colors: {
         purple: '#6B2D5C',
-        white: '#F0E7D8',
+        white: '#f7f1e8',
         black: '#232323',
     },
     fonts: {
