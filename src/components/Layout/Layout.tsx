@@ -1,33 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { LayoutStyles } from './Layout.style';
-import Header from 'components/Header/Header';
 import { Pages } from 'enums/Pages';
-import Collages from 'components/Collages/Collages';
+import { useStores } from 'hooks/useStores';
+import { observer } from 'mobx-react-lite';
 
-const Layout: React.FC = () => {
+interface LayoutProps {
+    children: React.ReactElement;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+    const { pagesStore } = useStores();
     const { Container, PageContent, PageHeader } = LayoutStyles;
-    const [currentTab, setCurrentTab] = useState<Pages>(Pages.HOME);
 
-    const pageContent = () => {
-        switch (currentTab) {
-            default:
-            case Pages.HOME:
-                return null;
-            case Pages.COLLAGES:
-                return <Collages />;
-        }
-    };
     return (
         <Container>
-            <Header currentTab={currentTab} setCurrentTab={setCurrentTab} />
             <PageContent>
-                {currentTab !== Pages.HOME && (
-                    <PageHeader>{Pages[currentTab].toLowerCase()}</PageHeader>
+                {pagesStore.currentPage !== Pages.HOME && (
+                    <PageHeader>
+                        {Pages[pagesStore.currentPage].toLowerCase()}
+                    </PageHeader>
                 )}
-                {pageContent()}
+                {children}
             </PageContent>
         </Container>
     );
 };
 
-export default Layout;
+export default observer(Layout);

@@ -4,6 +4,7 @@ import AppStyles from 'styles';
 const Container = styled.div`
     height: 100%;
     display: flex;
+    width: 100%;
 `;
 
 const PageContent = styled.div`

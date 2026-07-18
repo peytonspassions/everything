@@ -1,4 +1,4 @@
-import Modal from 'components/ModalRoot/ModalRoot';
+import Modal from 'components/shared/ModalRoot/ModalRoot';
 import React, { useState } from 'react';
 
 interface ModalProps {

@@ -6,6 +6,7 @@ const Container = styled.div`
     flex-direction: column;
     height: calc(100% - 5.95rem);
     padding: 1rem;
+    overflow: auto;
 `;
 
 const Content = styled.div`
@@ -27,13 +28,18 @@ const Image = styled.img`
     display: flex;
     justify-content: center;
     height: min-content;
-    max-width: 50%;
 `;
 
 const Details = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 300px;
+
+    @media only screen and (max-width: 700px) {
+        width: 100%;
+        padding-bottom: 1rem;
+    }
 `;
 
 const Description = styled.div`
@@ -49,8 +55,41 @@ const Date = styled(Description)`
 `;
 
 const Title = styled(Description)`
+    opacity: 1;
     font-weight: 500;
     font-size: 18px;
+`;
+
+const Materials = styled.div`
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+`;
+
+const Arrow = styled.div<{ $direction: 'left' | 'right' }>`
+    position: fixed;
+    top: 50%;
+    ${({ $direction }) =>
+        $direction === 'left'
+            ? `
+        left: 0.5rem;
+    `
+            : `
+        right: 0.5rem;
+    `}
+
+    background-color: rgb(from ${AppStyles.colors.white} r g b / 0.5);
+    border-radius: 50%;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 `;
 
 export const CollageModalProps = {
@@ -61,4 +100,6 @@ export const CollageModalProps = {
     Description,
     Date,
     Title,
+    Materials,
+    Arrow,
 };

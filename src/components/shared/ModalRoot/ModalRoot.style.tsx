@@ -25,7 +25,6 @@ const Overlay = styled.div`
 
 const ModalContainer = styled.div<{ $fullScreen?: boolean }>`
     &.modal {
-        width: ${(props) => (props.$fullScreen ? 'calc(100vw - 2rem)' : '')};
         height: ${(props) => (props.$fullScreen ? 'calc(100vh - 2rem)' : '')};
         position: relative;
         border-radius: 6px;

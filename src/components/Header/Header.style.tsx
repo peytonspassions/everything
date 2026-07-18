@@ -19,7 +19,7 @@ const HeaderContainer = styled.div`
         0 1px 2px -1px rgb(0 0 0 / 0.1);
 
     &:hover {
-        width: 20rem;
+        width: 11rem;
 
         .text {
             display: flex;
