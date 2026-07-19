@@ -1,69 +1,40 @@
 import { CollageObject, COLLAGES, Materials } from 'dataMaps/CollagesDataMap';
 import React, { useMemo } from 'react';
-import { CollageModalProps } from './CollageModal.style';
+import { CollageModalStyles } from './CollageModal.style';
 import Badge from 'components/shared/Badge/Badge';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import CarouselModal from 'components/shared/CarouselModal/CarouselModal';
 
 interface CollageModalProps {
-    collageId: number;
+    collage: CollageObject;
     onArrow: (direction: 'left' | 'right') => void;
 }
 
-const CollageModal: React.FC<CollageModalProps> = ({ collageId, onArrow }) => {
-    const collage = useMemo(
-        () =>
-            COLLAGES.find((collage: CollageObject) => collage.id === collageId),
-        [collageId, COLLAGES]
-    );
-
-    const {
-        Container,
-        Content,
-        Image,
-        Details,
-        Description,
-        Date,
-        Title,
-        Materials,
-        Arrow,
-    } = CollageModalProps;
+const CollageModal: React.FC<CollageModalProps> = ({ collage, onArrow }) => {
+    const { Image, Details, Description, Date, Materials } = CollageModalStyles;
 
     if (!collage) {
         return null;
     }
 
     return (
-        <Container>
-            {COLLAGES.length > 1 && (
-                <Arrow $direction="left" onClick={() => onArrow('left')}>
-                    <ArrowBackIcon />
-                </Arrow>
-            )}
-            <Content>
-                <Image src={`/everything/images/collages/${collage.image}`} />
-                <Details>
-                    <Title>{collage.title}</Title>
-                    <Date>{collage.date}</Date>
-                    <Materials>
-                        {collage.materials?.map(
-                            (material: Materials, index: number) => (
-                                <Badge
-                                    key={`material_${index}`}
-                                    text={material}
-                                />
-                            )
-                        )}
-                    </Materials>
-                    <Description>{collage.description}</Description>
-                </Details>
-            </Content>
-            {COLLAGES.length > 1 && (
-                <Arrow $direction="right" onClick={() => onArrow('right')}>
-                    <ArrowForwardIcon />
-                </Arrow>
-            )}
-        </Container>
+        <CarouselModal
+            itemId={collage.id}
+            itemList={COLLAGES}
+            onArrow={onArrow}
+        >
+            <Details>
+                <Date>{collage.date}</Date>
+                <Materials>
+                    {collage.materials?.map(
+                        (material: Materials, index: number) => (
+                            <Badge key={`material_${index}`} text={material} />
+                        )
+                    )}
+                </Materials>
+                <Description>{collage.description}</Description>
+            </Details>
+            <Image src={`/everything/images/collages/${collage.image}`} />
+        </CarouselModal>
     );
 };
 

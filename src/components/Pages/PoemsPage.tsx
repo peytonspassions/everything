@@ -3,6 +3,7 @@ import Layout from 'components/Layout/Layout';
 import { useStores } from 'hooks/useStores';
 import { Pages } from 'enums/Pages';
 import { observer } from 'mobx-react-lite';
+import Poems from 'components/Poems/Poems';
 
 const PoemsPage: React.FC = () => {
     const { pagesStore } = useStores();
@@ -13,7 +14,7 @@ const PoemsPage: React.FC = () => {
 
     return (
         <Layout>
-            <>Coming Soon</>
+            <Poems />
         </Layout>
     );
 };

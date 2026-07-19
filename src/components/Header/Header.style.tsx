@@ -5,7 +5,7 @@ const ACCENT = AppStyles.colors.white;
 const BACKGROUND = AppStyles.colors.purple;
 
 const HeaderContainer = styled.div`
-    background-color: rgb(from ${BACKGROUND} r g b / 0.5);
+    background-color: ${AppStyles.colors.lightPurple};
     width: 2.5rem;
     min-height: 100vh;
     display: flex;
@@ -17,6 +17,8 @@ const HeaderContainer = styled.div`
     box-shadow:
         0 1px 3px 0 rgb(0 0 0 / 0.1),
         0 1px 2px -1px rgb(0 0 0 / 0.1);
+    position: fixed;
+    z-index: 1;
 
     &:hover {
         width: 11rem;

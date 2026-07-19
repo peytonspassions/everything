@@ -1,25 +1,6 @@
 import styled from 'styled-components';
 import AppStyles from 'styles';
 
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: calc(100% - 5.95rem);
-    padding: 1rem;
-    overflow: auto;
-`;
-
-const Content = styled.div`
-    display: flex;
-    height: 100%;
-    gap: 2rem;
-
-    @media only screen and (max-width: 700px) {
-        flex-direction: column;
-        align-items: center;
-    }
-`;
-
 const Image = styled.img`
     border-radius: 6px;
     border: 1px solid ${AppStyles.colors.black};
@@ -35,10 +16,11 @@ const Details = styled.div`
     flex-direction: column;
     gap: 0.5rem;
     width: 300px;
+    overflow: auto;
+    padding-bottom: 1rem;
 
     @media only screen and (max-width: 700px) {
         width: 100%;
-        padding-bottom: 1rem;
     }
 `;
 
@@ -54,52 +36,16 @@ const Date = styled(Description)`
     font-style: italic;
 `;
 
-const Title = styled(Description)`
-    opacity: 1;
-    font-weight: 500;
-    font-size: 18px;
-`;
-
 const Materials = styled.div`
     display: flex;
     gap: 0.25rem;
     flex-wrap: wrap;
 `;
 
-const Arrow = styled.div<{ $direction: 'left' | 'right' }>`
-    position: fixed;
-    top: 50%;
-    ${({ $direction }) =>
-        $direction === 'left'
-            ? `
-        left: 0.5rem;
-    `
-            : `
-        right: 0.5rem;
-    `}
-
-    background-color: rgb(from ${AppStyles.colors.white} r g b / 0.5);
-    border-radius: 50%;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-        transform: scale(1.1);
-    }
-`;
-
-export const CollageModalProps = {
-    Container,
-    Content,
+export const CollageModalStyles = {
     Image,
     Details,
     Description,
     Date,
-    Title,
     Materials,
-    Arrow,
 };

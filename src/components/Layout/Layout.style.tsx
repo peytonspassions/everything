@@ -10,7 +10,7 @@ const Container = styled.div`
 const PageContent = styled.div`
     height: 100%;
     width: 100%;
-    margin: 2rem;
+    margin: 2rem 2rem 2rem 6.5rem;
 `;
 
 const PageHeader = styled.div`

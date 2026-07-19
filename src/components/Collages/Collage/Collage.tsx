@@ -1,6 +1,7 @@
 import { CollageObject } from 'dataMaps/CollagesDataMap';
 import React from 'react';
 import { CollageStyles } from './Collage.style';
+import Card from 'components/shared/Card/Card';
 
 interface CollageProps {
     collage: CollageObject;
@@ -8,14 +9,18 @@ interface CollageProps {
 }
 
 const Collage: React.FC<CollageProps> = ({ collage, showModal }) => {
-    const { Card, ImageContainer, Image, Title } = CollageStyles;
+    const { ImageContainer, Image, Title } = CollageStyles;
 
     return (
         <Card onClick={showModal}>
-            <Title>{collage.title}</Title>
-            <ImageContainer>
-                <Image src={`/everything/images/collages/${collage.image}`} />
-            </ImageContainer>
+            <>
+                <Title>{collage.title}</Title>
+                <ImageContainer>
+                    <Image
+                        src={`/everything/images/collages/${collage.image}`}
+                    />
+                </ImageContainer>
+            </>
         </Card>
     );
 };

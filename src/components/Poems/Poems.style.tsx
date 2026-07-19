@@ -7,6 +7,6 @@ const Container = styled.div`
     gap: 1rem;
 `;
 
-export const CollagesStyles = {
+export const PoemsStyles = {
     Container,
 };

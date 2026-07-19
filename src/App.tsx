@@ -44,6 +44,10 @@ const App: React.FC = () => {
                         element={<PoemsPage />}
                     />
                     <Route
+                        path={`${PageRoutes.BASE}${PageRoutes.POEMS}/:poemId`}
+                        element={<PoemsPage />}
+                    />
+                    <Route
                         path={`${PageRoutes.BASE}${PageRoutes.OTHER}`}
                         element={<OtherPage />}
                     />

@@ -11,6 +11,7 @@ const OverlayContainer = styled.div`
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    z-index: 3;
 `;
 
 const Overlay = styled.div`

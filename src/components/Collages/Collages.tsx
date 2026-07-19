@@ -1,5 +1,5 @@
 import { CollageObject, COLLAGES } from 'dataMaps/CollagesDataMap';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Collage from './Collage/Collage';
 import { CollagesStyles } from './Collages.style';
 import { useModal } from 'hooks/useModal';
@@ -14,6 +14,14 @@ const Collages: React.FC = () => {
     const [selectedCollage, setSelectedCollage] = useState<number>();
     const { collageId } = useParams();
 
+    const collage = useMemo(
+        () =>
+            COLLAGES.find(
+                (collage: CollageObject) => collage.id === Number(collageId)
+            ),
+        [collageId, COLLAGES]
+    );
+
     const onCloseModal = () => {
         setSelectedCollage(undefined);
         navigate(`${PageRoutes.BASE}${PageRoutes.COLLAGES}`);
@@ -21,7 +29,7 @@ const Collages: React.FC = () => {
     };
 
     useEffect(() => {
-        if (collageId && collageId) {
+        if (collageId) {
             setSelectedCollage(Number(collageId));
             show();
         }
@@ -70,16 +78,13 @@ const Collages: React.FC = () => {
                     key={`collage_${index}`}
                 />
             ))}
-            {selectedCollage && (
+            {collage && (
                 <ModalWindow
                     onHideCallback={onCloseModal}
                     fullScreen
-                    title={'Collage Details'}
+                    title={collage.title || 'Unknown'}
                 >
-                    <CollageModal
-                        collageId={selectedCollage}
-                        onArrow={onArrow}
-                    />
+                    <CollageModal collage={collage} onArrow={onArrow} />
                 </ModalWindow>
             )}
         </Container>
